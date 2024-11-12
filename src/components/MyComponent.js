@@ -2,50 +2,36 @@ import React from "react";
 import AddUserInfor from "./AddUserInfor";
 import DisplayInfor from "./DisplayInfor";
 
-class MyComponent extends React.Component {
-    state = {
-        listUsers: [
-            { id: 1, name: "Hoi Dan IT", age: "16" },
-            { id: 2, name: "Eric", age: "26" },
-            { id: 3, name: "HaryPhamDev", age: "69" },
-        ]
-    };
+class MyComponent extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            listUsers: [],
+        };
+    }
 
-    handleAddNewUser = (userObj) => {
+    handleAddUser = (user) => {
         this.setState({
-            listUsers: [userObj, ...this.state.listUsers]
+            listUsers: [user, ...this.state.listUsers],
         })
     };
 
     handleDeleteUser = (userID) => {
         this.setState({
             listUsers: this.state.listUsers.filter((user) => {
-                return user.id !== userID
+                return user.id !== userID;
             }),
         })
     };
-    // JSX
-    render() {
-        // DRY: don't repeat yourself
+    render(){
         return (
             <>
-                <div className="a">
-                    <AddUserInfor
-                        handleAddNewUser={this.handleAddNewUser}
-                    />
-                    <br /><br />
-                    <DisplayInfor
-                        handleDeleteUser={this.handleDeleteUser}
-                        listUsers={this.state.listUsers}
-                    />
-                    <hr />
-                </div>
-                <div className="b">
-
-                </div>
+                <div>Component của tôi</div>
+                <AddUserInfor handleAddUser={this.handleAddUser}/>
+                <DisplayInfor listUsers={this.state.listUsers} handleDeleteUser={this.handleDeleteUser}/>
             </>
         );
-    }
+    };
 }
 
 export default MyComponent;
