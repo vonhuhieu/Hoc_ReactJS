@@ -12,3 +12,4 @@ Nếu class, cần hàm constructor
 Muốn component render lại => cập nhật biến state
 DOM: chính là tab elements
 Tại sao react nhanh ? React có 2 dom: Dom thật Dom ảo
+Bắt đầu ôn tập thôi
